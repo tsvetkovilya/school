@@ -1,0 +1,40 @@
+#header {
+    background: #0D6EFD;
+    color: #FFFFFF;
+}
+
+#branding h1 a:link, #branding h1 a:visited {
+    color: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    color: var(--body-fg);
+    background: var(--body-bg);
+}
+
+#logout-form button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.module h2, .module caption, .inline-group h2 {
+    margin: 0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    text-align: left;
+    background: #0D6EFD;
+    color: var(--header-link-color);
+}
+
+a:link, a:visited {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+}

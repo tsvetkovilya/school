@@ -1,0 +1,126 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+
+<style>
+  body{
+    padding-top: 55px;
+    }
+  .page {
+    
+    position: fixed; top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+  .Absolute-Center {
+    display: flex;
+    justify-content: center;
+    }
+  .container {
+    width: 75%;
+    }
+  /* Стили для экранов с разрешением больше 768 пикселей */
+  @media screen and (min-width: 769px) {
+	.hide-on-big-screen {
+	  display: none;
+	  visibility: hidden;
+	}
+  }
+  /* Стили для экранов с разрешением меньше или равно 768 пикселей */
+  @media screen and (max-width: 768px) {
+	.hide-on-small-screen {
+	  display: none;
+	  visibility: hidden;
+	}
+  }
+  .empty-placeholder:before {
+    content: "ничего нет";
+    color: gray;
+  }
+
+  h3:empty + .empty-placeholder:before {
+    display: block;
+  }
+
+  .empty-placeholder:before {
+    display: none;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    <link rel="stylesheet" src="C:/Users/Илья/PycharmProjects/school/schoolsite/templates/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" src="C:/Users/Илья/PycharmProjects/school/schoolsite/templates/owlcarousel/owl.theme.default.min.css">
+    -->
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+  <title>Эксельсиум</title>
+</head>
+
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'Home' %}">Эксельсиум</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Главная</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="{% url 'Home' %}">О школе</a>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'TeacherList' %}">Наши преподаватели</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'courses' %}">Курсы</a>
+          </li>
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ученикам</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'TeacherList' %}">Наши преподаватели</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'schedule' %}">Расписание</a></li>
+              <li><a class="dropdown-item" href="{% url 'courses' %}">Курсы</a></li>
+            </ul>
+          </li>-->
+        </ul>
+        <div class="btn-group" role="group">
+
+
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            {% if user.is_authenticated %}
+            Привет, {{ user.username }}!⠀
+            {% else %}
+            Личный кабинет
+            {% endif %}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'account' %}">Личный кабинет</a></li>
+            <li><a class="dropdown-item" href="{% url 'Logout' %}">Выйти</a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="{% url 'Login' %}">Войти</a></li>
+            <li><a class="dropdown-item" href="{% url 'register' %}">Зарегистрироваться</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>

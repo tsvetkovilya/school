@@ -1,0 +1,389 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<style>
+  .my-div:empty::before {
+    content: 'Ничего нет';
+    display: block;
+    text-align: center;
+  }
+</style>
+
+{% if courses %}
+
+<div class="container" style="margin-top: 3%;">
+  <h1>ТВОИ КУРСЫ</h1>
+  <div class="card-body border-top my-div">
+    {% for course in courses %}
+    {% for course_name in courses_names %}
+    {% for teacher in teachers %}
+
+    {% if course_name.id == course.course_id and teacher.id == course.teacher_id %}
+    {% endif %}
+    {% endfor %}
+
+    {% if course.student_id == user.id and course_name.id == course.course_id %}
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">
+        <h3>
+          {{ course_name.name }}
+          <span class="empty-placeholder"></span>
+        </h3>
+      </div>
+      <div class="col-md-8" style="margin-top: 1%; margin-bottom: 1%">
+        <p class="card-text">
+          Дополнительная информация от преподавателя: <p>{{ course.additional_information }}
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    {% endfor %}
+  </div>
+
+  <h1>ТВОЕ РАСПИСАНИЕ</h1>
+  <div class="card-body border-top my-div">
+    {% if lessons %}
+
+    <div class="container hide-on-big-screen" style="margin-top: 3%; margin-bottom: 3%;">
+      <!--<div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Понедельник</h3>
+        {% for lesson in lessons %}
+          {% if lesson.day_of_week == '1' %}
+            {% for course in courses %}
+              {% if user.id == course.student_id %}
+                {% for course_name in courses_names %}
+                  {% if course_name.id == course.course_id %}
+                    {% if lesson.course_id == course.id %}
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          <div class="row">
+                            <div class="col " style="text-align: center; padding: 10px">
+                              <h9>
+                                {{ course_name.name }}<br>
+                                {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}<br>
+                                Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+                              </h9>
+                              <p class="card-text"></p>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Вторник</h3>
+        {% for lesson in lessons %}
+          {% if lesson.day_of_week == '2' %}
+            {% for course in courses %}
+              {% if user.id == course.student_id %}
+                {% for course_name in courses_names %}
+                  {% if course_name.id == course.course_id %}
+                    {% if lesson.course_id == course.id %}
+                      {{% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          <div class="row">
+                            <div class="col " style="text-align: center; padding: 10px">
+                              <h9>
+                                {{ course_name.name }}<br>
+                                {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}<br>
+                                Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+                              </h9>
+                              <p class="card-text"></p>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Среда</h3>
+        {% for lesson in lessons %}
+          {% if lesson.day_of_week == '3' %}
+            {% for course in courses %}
+              {% if user.id == course.student_id %}
+                {% for course_name in courses_names %}
+                  {% if course_name.id == course.course_id %}
+                    {% if lesson.course_id == course.id %}
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          <div class="row">
+                            <div class="col " style="text-align: center; padding: 10px">
+                              <h9>
+                                {{ course_name.name }}<br>
+                                {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}<br>
+                                Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+                              </h9>
+                              <p class="card-text"></p>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Четверг</h3>
+        {% for lesson in lessons %}
+          {% if lesson.day_of_week == '4' %}
+            {% for course in courses %}
+              {% if user.id == course.student_id %}
+                {% for course_name in courses_names %}
+                  {% if course_name.id == course.course_id %}
+                    {% if lesson.course_id == course.id %}
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          <div class="row">
+                            <div class="col " style="text-align: center; padding: 10px">
+                              <h9>
+                                {{ course_name.name }}<br>
+                                {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}<br>
+                                Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+                              </h9>
+                              <p class="card-text"></p>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Пятница</h3>
+        {% for lesson in lessons %}
+          {% if lesson.day_of_week == '5' %}
+            {% for course in courses %}
+              {% if user.id == course.student_id %}
+                {% for course_name in courses_names %}
+                  {% if course_name.id == course.course_id %}
+                    {% if lesson.course_id == course.id %}
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          <div class="row">
+                            <div class="col " style="text-align: center; padding: 10px">
+                              <h9>
+                                {{ course_name.name }}<br>
+                                {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}<br>
+                                Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+                              </h9>
+                              <p class="card-text"></p>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>-->
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Суббота</h3>
+        {% for lesson in lessons %}
+        {% now "W" as current_date %}
+          {% if lesson.day_of_week|date:"w" == "6" and lesson.day_of_week|date:"W" == current_date %}
+            {% for student in lesson.students.all %}
+              {% if user.id == student.student.id %}
+                <div class="row">
+                  <div class="col " style="text-align: center; padding: 10px">
+                    <h9>
+
+                      {% for course_name in courses_names %}
+                        {% if course_name.id == lesson.course_id %}
+                          {{ course_name.name }}<br>
+                        {% endif %}
+                      {% endfor %}
+
+                      Тема занятия: {{ lesson.lesson_topic }}<br>
+
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          Преподаватель: {{ lesson.teacher.teacher.last_name }} {{ lesson.teacher.teacher.first_name }} {{ lesson.teacher.patronymic }} <br>
+                        {% endif %}
+                      {% endfor %}
+
+                      Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+
+                    </h9>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="col" style="padding: 3px 3px">
+        <h3 class="border-bottom border-primary border-top">Воскресенье</h3>
+        {% for lesson in lessons %}
+        {% now "W" as current_date %}
+          {% if lesson.day_of_week|date:"w" == "0" and lesson.day_of_week|date:"W" == current_date %}
+            {% for student in lesson.students.all %}
+              {% if user.id == student.student.id %}
+                <div class="row">
+                  <div class="col " style="text-align: center; padding: 10px">
+                    <h9>
+
+                      {% for course_name in courses_names %}
+                        {% if course_name.id == lesson.course_id %}
+                          {{ course_name.name }}<br>
+                        {% endif %}
+                      {% endfor %}
+
+                      Тема занятия: {{ lesson.lesson_topic }}<br>
+
+                      {% for teacher in teachers %}
+                        {% if teacher.id == lesson.teacher_id %}
+                          Преподаватель: {{ lesson.teacher.teacher.last_name }} {{ lesson.teacher.teacher.first_name }} {{ lesson.teacher.patronymic }} <br>
+                        {% endif %}
+                      {% endfor %}
+
+                      Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+
+                    </h9>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="container hide-on-small-screen" style="text-align: center; margin-top: 3%; margin-bottom: 3%;">
+      <div class="row border-primary border-start border-end border-top border-bottom">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding: 3px 3px">
+          <h5>Суббота</h5>
+        </div>
+        <div class="ol-lg-6 col-md-6 col-sm-6 border-primary border-start" style="padding: 3px 3px">
+          <h5>Воскресенье</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col">
+            {% for lesson in lessons %}
+              {% now "W" as current_date %}
+              {% if lesson.day_of_week|date:"w" == "6" and lesson.day_of_week|date:"W" == current_date %}
+                {% for student in lesson.students.all %}
+                  {% if user.id == student.student.id %}
+                    <div class="row border-primary  border-start">
+                      <div class="col border-primary border-bottom" style="margin-top: 1%;">
+                        <h9>
+
+                          {% for course_name in courses_names %}
+                            {% if course_name.id == lesson.course_id %}
+                              {{ course_name.name }}<br>
+                            {% endif %}
+                          {% endfor %}
+
+                          Тема занятия: {{ lesson.lesson_topic }}<br>
+
+                          {% for teacher in teachers %}
+                            {% if teacher.id == lesson.teacher_id %}
+                              Преподаватель: {{ lesson.teacher.teacher.last_name }} {{ lesson.teacher.teacher.first_name }} {{ lesson.teacher.patronymic }} <br>
+                            {% endif %}
+                          {% endfor %}
+
+                          Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+
+                        </h9>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 border-primary border-start">
+          <div class="col">
+            {% for lesson in lessons %}
+              {% now "W" as current_date %}
+              {% if lesson.day_of_week|date:"w" == "0" and lesson.day_of_week|date:"W" == current_date %}
+                {% for student in lesson.students.all %}
+                  {% if user.id == student.student.id %}
+                    <div class="row border-primary  border-end">
+                      <div class="col border-primary border-bottom" style="margin-top: 1%;">
+                        <h9>
+
+                          {% for course_name in courses_names %}
+                            {% if course_name.id == lesson.course_id %}
+                              {{ course_name.name }}<br>
+                            {% endif %}
+                          {% endfor %}
+
+                          Тема занятия: {{ lesson.lesson_topic }}<br>
+
+                          {% for teacher in teachers %}
+                            {% if teacher.id == lesson.teacher_id %}
+                              Преподаватель: {{ lesson.teacher.teacher.last_name }} {{ lesson.teacher.teacher.first_name }} {{ lesson.teacher.patronymic }} <br>
+                            {% endif %}
+                          {% endfor %}
+
+                          Начало урока: {{ lesson.start_time }}<br> Конец урока: {{ lesson.end_time }}<br>
+
+                        </h9>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {% else %}
+
+    <h3>
+      Расписания пока нет, но скоро оно появится!
+    </h3>
+
+    {% endif %}
+  </div>
+
+</div>
+
+
+{% include 'footer.html' %}
+{% else %}
+<div class="page">
+  <div class="container d-flex justify-content-center align-items-center">
+    <h4>Упс...<br>Здесь пока ничего нет, но обязательно появится когда ты запишешся на курс!</h4>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
