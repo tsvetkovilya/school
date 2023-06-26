@@ -1,0 +1,43 @@
+
+
+<footer class="bg-primary text-light " style="padding-bottom: 2%;">
+  <div class="container" >
+    <div class="row" >
+      <div style="margin-top: 3%"><h2>Эксельсиум</h2></div>
+      <div class="col-md-6" style="margin-top: 2%">
+        <h3>Контактная информация</h3>
+        <p>Адрес: {{ school.address }}</p>
+        <p>Телефон: {{ school.phone_number }}</p>
+        <p>Электронная почта: {{ school.email }}</p>
+      </div>
+      <div class="col-md-6" style="margin-top: 2%">
+        <h3>Социальные сети</h3>
+        <ul class="list-unstyled ">
+          <p><li><a href="{{ school.vk }}" class="text-white" style="text-decoration:none">
+            <img src="../static/vk.png" width="20" height="20" alt="Описание изображения">
+            Вконтакте
+          </a></li></p>
+          <p><li><a href="{{ school.youtube }}" class="text-white" style="text-decoration:none">
+            <img src="../static/youtube.png" width="20" height="20" alt="Описание изображения">
+            YouTube
+          </a></li></p>
+          <p><li><a href="{{ school.telegram }}" class="text-white" style="text-decoration:none">
+            <img src="../static/telegram.png" width="20" height="20" alt="Описание изображения">
+            Telegram
+          </a></li></p>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.onload = function() {
+    var footer = document.getElementsByTagName("footer")[0];
+    if (footer.offsetTop + footer.offsetHeight < window.innerHeight) {
+      footer.style.position = "absolute";
+      footer.style.bottom = "0";
+      footer.style.width = "100%";
+    }
+  };
+</script>

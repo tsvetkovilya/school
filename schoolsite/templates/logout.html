@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="page">
+    <div class="container bg-white shadow rounded p-5 g-5">
+        <div class="row">
+            <div class="col">
+                <div class=" ">
+                    <div class="text-center">
+                        <h4 class="mb-4">Вы вышли из аккаунта</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <div class="col-md-6">
+                <a href="http://127.0.0.1:8000/login/"><button class="btn btn-primary w-100">Войти</button></a>
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'Home' %}"><button class="btn btn-primary w-100">На главную</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
